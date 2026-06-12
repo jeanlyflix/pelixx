@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..900,0..100,0..1&family=DM+Sans:opsz,wght@9..40,300..800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-feature-settings: 'ss01', 'ss02';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #100c0a;
+  color: #f4ebdc;
+  overflow-x: hidden;
+  /* Prevent pull-to-refresh and over-scroll bounce on PWA */
+  overscroll-behavior-y: none;
+  /* Smoother iOS scroll */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Disable iOS user-select on UI chrome but allow on content text */
+.nav, .mob-nav, .row-card, button { -webkit-user-select: none; user-select: none; }
+
+/* Prevent text/input zoom: 16px floor on mobile inputs */
+@media (max-width: 900px) {
+  input:not([type="checkbox"]):not([type="radio"]),
+  select, textarea {
+    font-size: 16px;
+  }
+}
+
+* { box-sizing: border-box; }
+
+::selection { background: rgba(224, 163, 112, 0.4); color: #fff; }
+
+button { font-family: inherit; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 230, 200, 0.08);
+  border-radius: 99px;
+  border: 2px solid #100c0a;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(224, 163, 112, 0.3); }
+
+@layer base {
+  :root {
+    --background: 18 22% 6%;
+    --foreground: 38 50% 91%;
+    --card: 22 23% 9%;
+    --card-foreground: 38 50% 91%;
+    --popover: 22 23% 9%;
+    --popover-foreground: 38 50% 91%;
+    --primary: 28 65% 66%;
+    --primary-foreground: 20 30% 6%;
+    --secondary: 22 12% 14%;
+    --secondary-foreground: 38 50% 91%;
+    --muted: 22 12% 14%;
+    --muted-foreground: 30 12% 60%;
+    --accent: 28 65% 66%;
+    --accent-foreground: 20 30% 6%;
+    --destructive: 0 60% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 22 12% 18%;
+    --input: 22 12% 18%;
+    --ring: 28 65% 66%;
+    --radius: 0.6rem;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground; }
+}
